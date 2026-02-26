@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Method — Lineage Foresight</title>
+    <meta name="description" content="One method. Three reinforcing layers. How Lineage Foresight builds decision-ready intelligence for Europe's creative economy.">
+    <meta property="og:title" content="Method — Lineage Foresight">
+    <meta property="og:description" content="One method. Three reinforcing layers. How Lineage Foresight builds decision-ready intelligence for Europe's creative economy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lineageforesight.eu/method">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-subpage">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Lineage Foresight</a>
+            <div class="nav-links" id="nav-links">
+                <a href="method.html" class="nav-link active">Method</a>
+                <a href="assessment.html" class="nav-link">Assessment</a>
+                <a href="partner.html" class="nav-link">Partner</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="assessment.html" class="nav-cta">Take the test &rarr;</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Heading -->
+        <section class="section method-page-header">
+            <div class="content-wide">
+                <h1>One method. Three reinforcing layers.</h1>
+                <p class="body-large method-intro">Lineage Foresight operates as one integrated system. Each layer produces intelligence that strengthens the others.</p>
+            </div>
+        </section>
+
+        <!-- Three Layers — Accordion -->
+        <section class="section" style="padding-top: 0;">
+            <div class="content-wide">
+                <div class="layers">
+                    <div class="layer" data-layer>
+                        <button class="layer-header" aria-expanded="false">
+                            <span class="layer-number">01</span>
+                            <span class="layer-name">Analytical Engine</span>
+                            <span class="layer-toggle" aria-hidden="true"></span>
+                        </button>
+                        <div class="layer-body">
+                            <p>Structured, decision-ready insights from qualitative and quantitative data. The analytical backbone translating cultural and creative value into comparable intelligence for funding, strategy, and ecosystem development.</p>
+                            <p>Pattern detection, precedent matching, and predictive modeling that improves with every decision logged. Intelligence accumulates over time.</p>
+                        </div>
+                    </div>
+                    <div class="layer" data-layer>
+                        <button class="layer-header" aria-expanded="false">
+                            <span class="layer-number">02</span>
+                            <span class="layer-name">Community Intelligence</span>
+                            <span class="layer-toggle" aria-hidden="true"></span>
+                        </button>
+                        <div class="layer-body">
+                            <p>Curated matchmaking as intelligence generation. Practical collaboration produces high-quality, real-world data through application. Human-centred and technology-enabled.</p>
+                            <p>Real-time human signals from creative practice, collaboration, and learning. Not surveys or self-reporting — structured observation of actual work.</p>
+                        </div>
+                    </div>
+                    <div class="layer" data-layer>
+                        <button class="layer-header" aria-expanded="false">
+                            <span class="layer-number">03</span>
+                            <span class="layer-name">Applied Foresight &amp; R&amp;D</span>
+                            <span class="layer-toggle" aria-hidden="true"></span>
+                        </button>
+                        <div class="layer-body">
+                            <p>Fully managed applied research and pilot programmes. Foresight and grounded insights tested through real decisions and multi-stakeholder collaboration.</p>
+                            <p>Hypotheses tested through pilots, outcomes validated against predictions, models upgraded based on real-world evidence. Continuous improvement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="method-closing">The layers are not services you select. They are how a single engagement produces compounding value.</p>
+                <p class="claude-signal">Our work is built natively with Claude Code — we bring that capability into every pilot engagement.</p>
+            </div>
+        </section>
+
+        <!-- Core Principles -->
+        <section class="section method-principles">
+            <div class="content-wide">
+                <h2>Why it compounds</h2>
+                <div class="principles-list">
+                    <div class="principle">
+                        <h3>Non-extractive</h3>
+                        <p>Value created by the ecosystem flows back to the ecosystem. Contributors gain institutional visibility. Institutions gain decision intelligence.</p>
+                    </div>
+                    <div class="principle">
+                        <h3>Built with, not on</h3>
+                        <p>Analytical frameworks co-designed with practitioners. Signal definitions validated through pilot contexts. Governance structures ensure institutional oversight and community consent.</p>
+                    </div>
+                    <div class="principle">
+                        <h3>Cumulative</h3>
+                        <p>Unlike traditional research, insights don't expire. Each decision adds to the precedent library. Each signal strengthens pattern detection. Each validation improves predictive accuracy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section method-cta">
+            <div class="content-wide">
+                <a href="assessment.html" class="btn-secondary">See how it applies &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Lineage Foresight &middot; Oslo &middot; contact@lineageforesight.eu</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+            navToggle.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                navToggle.classList.remove('open');
+            });
+        });
+
+        // Accordion
+        document.querySelectorAll('[data-layer]').forEach(layer => {
+            const header = layer.querySelector('.layer-header');
+            const body = layer.querySelector('.layer-body');
+
+            header.addEventListener('click', () => {
+                const isOpen = header.getAttribute('aria-expanded') === 'true';
+
+                // Close all others
+                document.querySelectorAll('[data-layer]').forEach(other => {
+                    other.querySelector('.layer-header').setAttribute('aria-expanded', 'false');
+                    other.querySelector('.layer-body').style.maxHeight = null;
+                    other.classList.remove('layer-open');
+                });
+
+                // Toggle this one
+                if (!isOpen) {
+                    header.setAttribute('aria-expanded', 'true');
+                    body.style.maxHeight = body.scrollHeight + 'px';
+                    layer.classList.add('layer-open');
+                }
+            });
+        });
+
+        // Open first layer by default
+        const firstLayer = document.querySelector('[data-layer]');
+        if (firstLayer) {
+            firstLayer.querySelector('.layer-header').setAttribute('aria-expanded', 'true');
+            firstLayer.querySelector('.layer-body').style.maxHeight = firstLayer.querySelector('.layer-body').scrollHeight + 'px';
+            firstLayer.classList.add('layer-open');
+        }
+    </script>
+
+</body>
+</html>

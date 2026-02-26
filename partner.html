@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partner — Lineage Foresight</title>
+    <meta name="description" content="Pilot and research partnerships with Lineage Foresight. Build decision-ready intelligence for Europe's creative economy.">
+    <meta property="og:title" content="Partner — Lineage Foresight">
+    <meta property="og:description" content="Pilot and research partnerships with Lineage Foresight. Build decision-ready intelligence for Europe's creative economy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lineageforesight.eu/partner">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-subpage">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Lineage Foresight</a>
+            <div class="nav-links" id="nav-links">
+                <a href="method.html" class="nav-link">Method</a>
+                <a href="assessment.html" class="nav-link">Assessment</a>
+                <a href="partner.html" class="nav-link active">Partner</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="assessment.html" class="nav-cta">Take the test &rarr;</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Who this is for -->
+        <section class="section partner-section partner-who">
+            <div class="content-narrow">
+                <span class="partner-label">Who this is for</span>
+                <h2>Lineage Foresight works with institutions that shape Europe's creative economy</h2>
+                <div class="stakeholder-list">
+                    <div class="stakeholder">
+                        <h3>Organisations that commission creative work</h3>
+                        <p>You need to assess quality, predict sustainability, and justify investment in projects with qualitative, long-term value. Traditional metrics miss what matters.</p>
+                    </div>
+                    <div class="stakeholder">
+                        <h3>Policymakers, funders, and investors</h3>
+                        <p>You allocate capital at scale but lack shared frameworks to compare outcomes across contexts or learn from past decisions. Each decision starts from scratch.</p>
+                    </div>
+                    <div class="stakeholder">
+                        <h3>Creative practitioners and intermediaries</h3>
+                        <p>You produce deep cultural value through collaboration and practice, but lack tools to document, communicate, or demonstrate this value to funders and institutions.</p>
+                    </div>
+                </div>
+                <p class="stakeholder-bridge">Two ways to work with us:</p>
+            </div>
+        </section>
+
+        <!-- Pilot Partnerships -->
+        <section class="section partner-section">
+            <div class="content-narrow">
+                <span class="partner-label">Pilot partnerships</span>
+                <h2>Build decision-ready intelligence inside real decision contexts</h2>
+                <p>We work with a small number of institutional partners to build decision-ready intelligence inside real decision contexts. Not a report delivered from outside — a structured engagement where your knowledge of what matters meets our method for making it legible.</p>
+                <p>What makes this different from consultancy is what it produces. A pilot doesn't just generate insight for your organisation. It generates evidence for how decisions about creative value can be made differently — across institutions, across borders, over time. Your case becomes part of a growing infrastructure that makes the next decision, in the next organisation, better informed.</p>
+                <p>This is a founding commitment. We invest methodology and analytical capacity. You invest institutional context and real decisions. Both sides shape something that didn't exist before.</p>
+                <p>A limited number of pilot partnerships are available in 2026.</p>
+                <p class="partner-cta-lead">If your assessment surfaced something you recognise — let's talk about what it would take to change it.</p>
+                <a href="mailto:ida@lineageforesight.eu?subject=Pilot%20partnership%20enquiry" class="btn-secondary">Start a conversation &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Divider -->
+        <div class="partner-divider"><hr></div>
+
+        <!-- Research Partnerships -->
+        <section class="section partner-section">
+            <div class="content-narrow">
+                <span class="partner-label">Research partnerships</span>
+                <h2>Help build the first European baseline for decision-readiness</h2>
+                <p>The first European baseline for decision-readiness in the creative economy is being built right now. Every assessment response contributes to it. Research partners go further.</p>
+                <p>A research partnership is a longer commitment to building the infrastructure itself — contributing sustained institutional perspective to an evidence base that compounds with every engagement. You don't receive a deliverable. You become part of how this field develops its capacity to know what it's doing.</p>
+                <p>A small number of founding research partnerships are open. This is a mutual investment — not a grant, not a fee for service, but a commitment to building something the sector has never had.</p>
+                <p class="partner-cta-lead">If you think the creative economy deserves better intelligence than it currently has, this is how it gets built.</p>
+                <a href="mailto:ida@lineageforesight.eu?subject=Research%20partnership%20enquiry" class="btn-secondary">Express interest &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Lineage Foresight &middot; Oslo &middot; contact@lineageforesight.eu</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+            navToggle.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                navToggle.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

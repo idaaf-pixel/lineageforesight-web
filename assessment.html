@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment — Lineage Foresight</title>
+    <meta name="description" content="Take the Decision Readiness Assessment. Map your organisation across five dimensions. Join the first field-level benchmark for Europe's creative economy.">
+    <meta property="og:title" content="Assessment — Lineage Foresight">
+    <meta property="og:description" content="Take the Decision Readiness Assessment. Map your organisation across five dimensions. Join the first field-level benchmark for Europe's creative economy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lineageforesight.eu/assessment">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-subpage">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Lineage Foresight</a>
+            <div class="nav-links" id="nav-links">
+                <a href="method.html" class="nav-link">Method</a>
+                <a href="assessment.html" class="nav-link active">Assessment</a>
+                <a href="partner.html" class="nav-link">Partner</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="assessment.html" class="nav-cta">Take the test &rarr;</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Assessment Header -->
+        <section class="section assessment-header">
+            <div class="content-narrow">
+                <h1>Decision Readiness Assessment</h1>
+                <p class="body-large">How does your organisation handle qualitative value when it matters most — in real decisions?</p>
+
+                <ul class="dimensions-tags">
+                    <li>Visibility</li>
+                    <li>Measurement</li>
+                    <li>Coordination</li>
+                    <li>Investment Readiness</li>
+                    <li>Foresight Capacity</li>
+                </ul>
+
+                <div class="assessment-details">
+                    <p>The assessment maps your institution across five dimensions. It produces an instant radar profile with written interpretation. It takes less than five minutes. The result is yours to keep.</p>
+                    <a href="https://readiness.lineageforesight.eu?source=web" class="btn-primary">Take the Decision Readiness Test &rarr;</a>
+                    <p class="benchmark-note">Your response contributes to the State of Decision Readiness in Europe's Creative Economy — the first field-level benchmark, publishing Spring 2026.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap -->
+        <section class="section roadmap">
+            <div class="content-wide">
+                <h2>Where we are</h2>
+                <div class="timeline">
+                    <div class="timeline-stage">
+                        <span class="timeline-label">Now</span>
+                        <p>Decision Readiness Assessment — mapping the field</p>
+                    </div>
+                    <div class="timeline-stage">
+                        <span class="timeline-label">Spring 2026</span>
+                        <p>State of Decision Readiness — first benchmark publication</p>
+                    </div>
+                    <div class="timeline-stage">
+                        <span class="timeline-label">Q2–Q3 2026</span>
+                        <p>Research partner cohorts — 5 slots, 3-month co-creation</p>
+                    </div>
+                    <div class="timeline-stage">
+                        <span class="timeline-label">Ongoing</span>
+                        <p>Cultural Intelligence Layer — compounding infrastructure</p>
+                    </div>
+                </div>
+                <p class="roadmap-note">We are building this in public. The roadmap is visible because transparency about where we are builds the trust required for the work we do.</p>
+            </div>
+        </section>
+
+        <!-- Publication Teaser -->
+        <section class="section publication">
+            <div class="content-narrow">
+                <h3>State of Cultural Infrastructure Decision Readiness in Europe's Creative Economy</h3>
+                <p>The first field-level benchmark on how CCI institutions make decisions — built from 100+ structured responses by programme managers, foundation officers, and public authority decision-makers.</p>
+                <p class="publication-date">Publishing Spring 2026.</p>
+                <a href="https://readiness.lineageforesight.eu?source=web" class="btn-secondary">Contribute your perspective — take the test &rarr;</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Lineage Foresight &middot; Oslo &middot; contact@lineageforesight.eu</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+            navToggle.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                navToggle.classList.remove('open');
+            });
+        });
+    </script>
+
+</body>
+</html>

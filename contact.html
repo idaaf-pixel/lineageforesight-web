@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Lineage Foresight</title>
+    <meta name="description" content="Get in touch with Lineage Foresight. Intelligence infrastructure for Europe's creative economy.">
+    <meta property="og:title" content="Contact — Lineage Foresight">
+    <meta property="og:description" content="Get in touch with Lineage Foresight. Intelligence infrastructure for Europe's creative economy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lineageforesight.eu/contact">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-subpage">
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">Lineage Foresight</a>
+            <div class="nav-links" id="nav-links">
+                <a href="method.html" class="nav-link">Method</a>
+                <a href="assessment.html" class="nav-link">Assessment</a>
+                <a href="partner.html" class="nav-link">Partner</a>
+                <a href="contact.html" class="nav-link active">Contact</a>
+                <a href="assessment.html" class="nav-cta">Take the test &rarr;</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- Contact -->
+        <section class="section contact-header">
+            <div class="content-narrow">
+                <h1>Let's talk.</h1>
+                <p class="contact-email"><a href="mailto:ida@lineageforesight.eu">ida@lineageforesight.eu</a></p>
+                <p class="contact-email"><a href="mailto:contact@lineageforesight.eu">contact@lineageforesight.eu</a></p>
+                <p class="contact-location">Oslo, Norway</p>
+            </div>
+        </section>
+
+        <!-- Form -->
+        <section class="section form-section">
+            <div class="content-narrow">
+                <h2>Tell us about yourself</h2>
+                <p class="form-subline">Not a form. A conversation.</p>
+
+                <form id="interest-form">
+                    <div class="form-group">
+                        <label for="field-name">Name</label>
+                        <input type="text" id="field-name" name="name" required autocomplete="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="field-org">Organisation</label>
+                        <input type="text" id="field-org" name="organisation" required autocomplete="organization">
+                    </div>
+
+                    <div class="form-group">
+                        <span class="form-label">What best describes your work?</span>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="funding" required>
+                                <span>I allocate funding or grants</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="programmes">
+                                <span>I design or manage programmes</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="policy">
+                                <span>I shape policy or strategy</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="investment">
+                                <span>I make investment decisions</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="ecosystems">
+                                <span>I build or coordinate ecosystems and networks</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="role" value="other">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span class="form-label">What happens to the insight and learning from your last programme or funding cycle?</span>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="lost" required>
+                                <span>Most of it is lost — we start fresh each time</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="informal">
+                                <span>Some is carried forward, but informally</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="unused">
+                                <span>We have documentation, but it's rarely reused</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="inconsistent">
+                                <span>We have a system, but it's inconsistent</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="continuity" value="strong">
+                                <span>We have strong continuity across cycles</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="field-open">What would change in your work if the intelligence from past decisions was always available — structured, comparable, and ready to use?</label>
+                        <textarea id="field-open" name="open-pull" rows="4" placeholder="Optional"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary">Submit</button>
+                </form>
+
+                <div id="form-confirmation" class="form-confirmation" hidden>
+                    <h3>Thank you.</h3>
+                    <p>You're now part of a growing network of CCI decision-makers who believe this infrastructure should exist.</p>
+                    <p><strong>Now:</strong> We'll share early findings from the State of Decision Readiness as they emerge.</p>
+                    <p><strong>Spring 2026:</strong> The full benchmark publication, built from 100+ responses.</p>
+                    <p><strong>Q2–Q3 2026:</strong> Research partner cohorts open — small groups testing the method against live decisions.</p>
+                    <p>Haven't taken the Decision Readiness Test yet? <a href="https://readiness.lineageforesight.eu?source=web" class="link-teal">Take the test &rarr;</a></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Lineage Foresight &middot; Oslo &middot; contact@lineageforesight.eu</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+            navToggle.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                navToggle.classList.remove('open');
+            });
+        });
+
+        // Form submission
+        document.getElementById('interest-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.hidden = true;
+            document.getElementById('form-confirmation').hidden = false;
+            document.getElementById('form-confirmation').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+
+</body>
+</html>
