@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Value Assessment — Format Comparison</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f0; color: #1a1a1a; line-height: 1.6; min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 8px; }
+        .subtitle { color: #666; margin-bottom: 40px; font-size: 1rem; }
+
+        .card {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 12px;
+            padding: 28px; margin-bottom: 20px; text-decoration: none; color: inherit;
+            display: block; transition: all 0.2s;
+        }
+        .card:hover { border-color: #999; box-shadow: 0 2px 12px rgba(0,0,0,0.06); transform: translateY(-1px); }
+
+        .card .badge {
+            display: inline-block; font-size: 0.72rem; font-weight: 600;
+            padding: 4px 10px; border-radius: 100px; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 12px;
+        }
+        .badge-a { background: #e8d5f5; color: #6b21a8; }
+        .badge-b { background: #d5e8f5; color: #1e5a8a; }
+        .badge-c { background: #fde8d5; color: #9a3412; }
+
+        .card h2 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; }
+        .card p { color: #555; font-size: 0.95rem; margin-bottom: 12px; }
+
+        .card .traits {
+            display: flex; flex-wrap: wrap; gap: 6px;
+        }
+        .card .trait {
+            font-size: 0.78rem; background: #f5f5f0; padding: 4px 10px;
+            border-radius: 100px; color: #666;
+        }
+
+        .divider {
+            border: none; border-top: 1px solid #e0e0e0; margin: 32px 0;
+        }
+
+        .topics {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 12px; padding: 24px;
+        }
+        .topics h3 { font-size: 1rem; font-weight: 600; margin-bottom: 14px; }
+        .topics ol { padding-left: 20px; }
+        .topics li { margin-bottom: 6px; color: #555; font-size: 0.93rem; }
+        .topics li strong { color: #1a1a1a; }
+
+        .note {
+            margin-top: 32px; padding: 16px; background: #fff; border: 1px solid #e0e0e0;
+            border-radius: 8px; font-size: 0.88rem; color: #666;
+        }
+        .note strong { color: #1a1a1a; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Creative Value Assessment</h1>
+        <p class="subtitle">Three question formats, same five topics. Try each and compare.</p>
+
+        <a href="version-a-likert.html" class="card">
+            <span class="badge badge-a">Version A</span>
+            <h2>Likert Scale</h2>
+            <p>Rate your agreement with five statements about your organisation's creative practices, from "Strongly Disagree" to "Strongly Agree."</p>
+            <div class="traits">
+                <span class="trait">Quick to complete</span>
+                <span class="trait">Familiar format</span>
+                <span class="trait">Quantifiable</span>
+                <span class="trait">Risk of neutral bias</span>
+            </div>
+        </a>
+
+        <a href="version-b-scenarios.html" class="card">
+            <span class="badge badge-b">Version B</span>
+            <h2>Scenario-Based</h2>
+            <p>Read a realistic workplace scenario and pick the response that best matches how your organisation would actually behave. Each option maps to a maturity level.</p>
+            <div class="traits">
+                <span class="trait">Contextual</span>
+                <span class="trait">Harder to game</span>
+                <span class="trait">Built-in maturity model</span>
+                <span class="trait">Takes longer</span>
+            </div>
+        </a>
+
+        <a href="version-c-binary.html" class="card">
+            <span class="badge badge-c">Version C</span>
+            <h2>Binary + Branching</h2>
+            <p>Start with a Yes/No question, then answer a targeted follow-up based on your response. Two-step format digs deeper into root causes.</p>
+            <div class="traits">
+                <span class="trait">Adaptive</span>
+                <span class="trait">Reveals root causes</span>
+                <span class="trait">Conversational feel</span>
+                <span class="trait">More interactive</span>
+            </div>
+        </a>
+
+        <hr class="divider">
+
+        <div class="topics">
+            <h3>All three versions cover the same five topics:</h3>
+            <ol>
+                <li><strong>Evaluation Priorities</strong> — How creative ideas are assessed</li>
+                <li><strong>Decision-Making Authority</strong> — Who approves or rejects creative work</li>
+                <li><strong>Measuring Success</strong> — How creative outcomes are evaluated</li>
+                <li><strong>Handling Rejection</strong> — How "no" is communicated and received</li>
+                <li><strong>Creative Risk Appetite</strong> — Willingness to experiment</li>
+            </ol>
+        </div>
+
+        <div class="note">
+            <strong>Purpose:</strong> This is a format comparison test. Try all three versions and consider:
+            Which felt most natural? Which revealed the most honest answers? Which would institutional users
+            actually complete without disengaging?
+        </div>
+    </div>
+</body>
+</html>

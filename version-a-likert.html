@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version A — Likert Scale | Creative Value Assessment</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f0; color: #1a1a1a; line-height: 1.6; min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .back { display: inline-block; color: #666; text-decoration: none; font-size: 0.9rem; margin-bottom: 24px; }
+        .back:hover { color: #1a1a1a; }
+        .badge {
+            display: inline-block; background: #e8d5f5; color: #6b21a8; font-size: 0.75rem;
+            font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 12px;
+        }
+        h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 8px; }
+        .subtitle { color: #666; margin-bottom: 12px; font-size: 1rem; }
+        .format-note {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 16px; margin-bottom: 32px; font-size: 0.9rem; color: #555;
+        }
+        .format-note strong { color: #1a1a1a; }
+
+        .question {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 24px; margin-bottom: 20px;
+        }
+        .question .q-num {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: #888; margin-bottom: 6px;
+        }
+        .question .statement {
+            font-weight: 500; font-size: 1.05rem; margin-bottom: 20px; font-style: italic;
+        }
+        .likert-scale {
+            display: flex; justify-content: space-between; gap: 4px;
+        }
+        .likert-option {
+            flex: 1; text-align: center;
+        }
+        .likert-option input { display: none; }
+        .likert-option label {
+            display: block; padding: 12px 4px; border: 2px solid #e0e0e0;
+            border-radius: 8px; cursor: pointer; font-size: 0.78rem;
+            line-height: 1.3; transition: all 0.15s; min-height: 70px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .likert-option label:hover { border-color: #999; background: #fafaf5; }
+        .likert-option input:checked + label {
+            border-color: #1a1a1a; background: #1a1a1a; color: #fff;
+        }
+
+        button {
+            display: block; width: 100%; padding: 14px; background: #1a1a1a; color: #fff;
+            border: none; border-radius: 8px; font-size: 1rem; font-weight: 500;
+            cursor: pointer; margin-top: 12px; transition: background 0.15s;
+        }
+        button:hover { background: #333; }
+        .error { color: #c0392b; font-size: 0.9rem; margin-top: 12px; display: none; }
+
+        #results { display: none; }
+        #results h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 24px; }
+        .result-item {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 20px; margin-bottom: 14px;
+        }
+        .result-item .q-label {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: #888; margin-bottom: 4px;
+        }
+        .result-item .q-text { font-weight: 500; margin-bottom: 8px; font-style: italic; }
+        .result-item .a-text { color: #6b21a8; font-weight: 500; }
+        .restart {
+            background: transparent; color: #1a1a1a; border: 1px solid #ccc; margin-top: 24px;
+        }
+        .restart:hover { background: #f0f0eb; }
+
+        @media (max-width: 500px) {
+            .likert-scale { flex-direction: column; gap: 8px; }
+            .likert-option label { min-height: auto; padding: 10px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="compare.html" class="back">&larr; Back to all versions</a>
+
+        <form id="assessment">
+            <span class="badge">Version A</span>
+            <h1>Creative Value Assessment</h1>
+            <p class="subtitle">Likert Scale Format</p>
+            <div class="format-note">
+                <strong>How this works:</strong> Rate your agreement with each statement on a 5-point scale,
+                from "Strongly Disagree" to "Strongly Agree."
+            </div>
+
+            <div class="question">
+                <div class="q-num">Topic 1 — Evaluation Priorities</div>
+                <p class="statement">"Our organisation has a clear, shared understanding of what makes a creative idea worth pursuing."</p>
+                <div class="likert-scale">
+                    <div class="likert-option">
+                        <input type="radio" name="q1" id="q1a" value="1">
+                        <label for="q1a">Strongly Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q1" id="q1b" value="2">
+                        <label for="q1b">Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q1" id="q1c" value="3">
+                        <label for="q1c">Neutral</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q1" id="q1d" value="4">
+                        <label for="q1d">Agree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q1" id="q1e" value="5">
+                        <label for="q1e">Strongly Agree</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="q-num">Topic 2 — Decision-Making Authority</div>
+                <p class="statement">"It is always clear who has the authority to approve or reject creative work in our organisation."</p>
+                <div class="likert-scale">
+                    <div class="likert-option">
+                        <input type="radio" name="q2" id="q2a" value="1">
+                        <label for="q2a">Strongly Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q2" id="q2b" value="2">
+                        <label for="q2b">Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q2" id="q2c" value="3">
+                        <label for="q2c">Neutral</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q2" id="q2d" value="4">
+                        <label for="q2d">Agree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q2" id="q2e" value="5">
+                        <label for="q2e">Strongly Agree</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="q-num">Topic 3 — Measuring Success</div>
+                <p class="statement">"We have robust methods for evaluating whether our creative output actually achieved its goals."</p>
+                <div class="likert-scale">
+                    <div class="likert-option">
+                        <input type="radio" name="q3" id="q3a" value="1">
+                        <label for="q3a">Strongly Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q3" id="q3b" value="2">
+                        <label for="q3b">Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q3" id="q3c" value="3">
+                        <label for="q3c">Neutral</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q3" id="q3d" value="4">
+                        <label for="q3d">Agree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q3" id="q3e" value="5">
+                        <label for="q3e">Strongly Agree</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="q-num">Topic 4 — Handling Rejection</div>
+                <p class="statement">"When creative ideas are turned down here, the reasons given are constructive and consistent."</p>
+                <div class="likert-scale">
+                    <div class="likert-option">
+                        <input type="radio" name="q4" id="q4a" value="1">
+                        <label for="q4a">Strongly Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q4" id="q4b" value="2">
+                        <label for="q4b">Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q4" id="q4c" value="3">
+                        <label for="q4c">Neutral</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q4" id="q4d" value="4">
+                        <label for="q4d">Agree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q4" id="q4e" value="5">
+                        <label for="q4e">Strongly Agree</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="q-num">Topic 5 — Creative Risk Appetite</div>
+                <p class="statement">"Our organisation actively encourages creative experimentation, even when the outcome is uncertain."</p>
+                <div class="likert-scale">
+                    <div class="likert-option">
+                        <input type="radio" name="q5" id="q5a" value="1">
+                        <label for="q5a">Strongly Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q5" id="q5b" value="2">
+                        <label for="q5b">Disagree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q5" id="q5c" value="3">
+                        <label for="q5c">Neutral</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q5" id="q5d" value="4">
+                        <label for="q5d">Agree</label>
+                    </div>
+                    <div class="likert-option">
+                        <input type="radio" name="q5" id="q5e" value="5">
+                        <label for="q5e">Strongly Agree</label>
+                    </div>
+                </div>
+            </div>
+
+            <p class="error" id="error-msg">Please respond to all 5 statements before submitting.</p>
+            <button type="submit">Submit responses</button>
+        </form>
+
+        <div id="results">
+            <h2>Your Responses</h2>
+            <div id="results-list"></div>
+            <button class="restart" onclick="resetForm()">Start again</button>
+        </div>
+    </div>
+
+    <script>
+        const statements = {
+            q1: "Our organisation has a clear, shared understanding of what makes a creative idea worth pursuing.",
+            q2: "It is always clear who has the authority to approve or reject creative work in our organisation.",
+            q3: "We have robust methods for evaluating whether our creative output actually achieved its goals.",
+            q4: "When creative ideas are turned down here, the reasons given are constructive and consistent.",
+            q5: "Our organisation actively encourages creative experimentation, even when the outcome is uncertain."
+        };
+
+        const topics = {
+            q1: "Evaluation Priorities",
+            q2: "Decision-Making Authority",
+            q3: "Measuring Success",
+            q4: "Handling Rejection",
+            q5: "Creative Risk Appetite"
+        };
+
+        const labels = { "1": "Strongly Disagree", "2": "Disagree", "3": "Neutral", "4": "Agree", "5": "Strongly Agree" };
+
+        document.getElementById('assessment').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            const responses = {};
+            let count = 0;
+            for (const key of Object.keys(statements)) {
+                const val = fd.get(key);
+                if (val) { responses[key] = val; count++; }
+            }
+            if (count < 5) {
+                document.getElementById('error-msg').style.display = 'block';
+                return;
+            }
+            document.getElementById('error-msg').style.display = 'none';
+
+            const list = document.getElementById('results-list');
+            list.innerHTML = '';
+            for (const [key, val] of Object.entries(responses)) {
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                item.innerHTML = `
+                    <div class="q-label">${topics[key]}</div>
+                    <div class="q-text">"${statements[key]}"</div>
+                    <div class="a-text">${labels[val]} (${val}/5)</div>
+                `;
+                list.appendChild(item);
+            }
+            document.getElementById('assessment').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function resetForm() {
+            document.getElementById('assessment').reset();
+            document.getElementById('assessment').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

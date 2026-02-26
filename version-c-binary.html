@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version C — Binary + Branching | Creative Value Assessment</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f0; color: #1a1a1a; line-height: 1.6; min-height: 100vh;
+        }
+        .container { max-width: 720px; margin: 0 auto; padding: 48px 24px; }
+        .back { display: inline-block; color: #666; text-decoration: none; font-size: 0.9rem; margin-bottom: 24px; }
+        .back:hover { color: #1a1a1a; }
+        .badge {
+            display: inline-block; background: #fde8d5; color: #9a3412; font-size: 0.75rem;
+            font-weight: 600; padding: 4px 10px; border-radius: 100px; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-bottom: 12px;
+        }
+        h1 { font-size: 1.75rem; font-weight: 600; margin-bottom: 8px; }
+        .subtitle { color: #666; margin-bottom: 12px; font-size: 1rem; }
+        .format-note {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 16px; margin-bottom: 32px; font-size: 0.9rem; color: #555;
+        }
+        .format-note strong { color: #1a1a1a; }
+
+        .question {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 24px; margin-bottom: 20px;
+        }
+        .question .q-num {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: #888; margin-bottom: 6px;
+        }
+        .question .primary-q {
+            font-weight: 500; font-size: 1.05rem; margin-bottom: 16px;
+        }
+        .yn-group {
+            display: flex; gap: 12px; margin-bottom: 0;
+        }
+        .yn-group input { display: none; }
+        .yn-group label {
+            flex: 1; text-align: center; padding: 12px; border: 2px solid #e0e0e0;
+            border-radius: 8px; cursor: pointer; font-weight: 500; font-size: 1rem;
+            transition: all 0.15s;
+        }
+        .yn-group label:hover { border-color: #999; background: #fafaf5; }
+        .yn-group input:checked + label.yes-label { border-color: #065f46; background: #d1fae5; color: #065f46; }
+        .yn-group input:checked + label.no-label { border-color: #991b1b; background: #fde8e8; color: #991b1b; }
+
+        .followup {
+            margin-top: 20px; padding-top: 20px; border-top: 1px dashed #e0e0e0;
+            display: none;
+        }
+        .followup.visible { display: block; }
+        .followup .followup-label {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: #9a3412; margin-bottom: 8px; font-weight: 600;
+        }
+        .followup .followup-q {
+            font-weight: 500; margin-bottom: 14px; font-size: 0.95rem;
+        }
+        .followup label {
+            display: block; padding: 10px 14px; border: 2px solid #e0e0e0;
+            border-radius: 8px; cursor: pointer; margin-bottom: 8px;
+            transition: all 0.15s; font-size: 0.9rem;
+        }
+        .followup label:hover { border-color: #999; background: #fafaf5; }
+        .followup input[type="radio"] { display: none; }
+        .followup input[type="radio"]:checked + label {
+            border-color: #9a3412; background: #fff7ed;
+        }
+
+        button {
+            display: block; width: 100%; padding: 14px; background: #1a1a1a; color: #fff;
+            border: none; border-radius: 8px; font-size: 1rem; font-weight: 500;
+            cursor: pointer; margin-top: 12px; transition: background 0.15s;
+        }
+        button:hover { background: #333; }
+        .error { color: #c0392b; font-size: 0.9rem; margin-top: 12px; display: none; }
+
+        #results { display: none; }
+        #results h2 { font-size: 1.4rem; font-weight: 600; margin-bottom: 24px; }
+        .result-item {
+            background: #fff; border: 1px solid #e0e0e0; border-radius: 8px;
+            padding: 20px; margin-bottom: 14px;
+        }
+        .result-item .q-label {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+            color: #888; margin-bottom: 4px;
+        }
+        .result-item .q-text { font-weight: 500; margin-bottom: 6px; }
+        .result-item .a-primary {
+            font-weight: 600; margin-bottom: 8px;
+        }
+        .a-primary.yes { color: #065f46; }
+        .a-primary.no { color: #991b1b; }
+        .result-item .a-followup { color: #9a3412; font-size: 0.93rem; }
+
+        .restart {
+            background: transparent; color: #1a1a1a; border: 1px solid #ccc; margin-top: 24px;
+        }
+        .restart:hover { background: #f0f0eb; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="compare.html" class="back">&larr; Back to all versions</a>
+
+        <form id="assessment">
+            <span class="badge">Version C</span>
+            <h1>Creative Value Assessment</h1>
+            <p class="subtitle">Binary + Branching Format</p>
+            <div class="format-note">
+                <strong>How this works:</strong> Answer each Yes/No question honestly.
+                A follow-up question will appear based on your answer to dig deeper into your organisation's reality.
+            </div>
+
+            <!-- Q1: Evaluation Priorities -->
+            <div class="question" id="block-q1">
+                <div class="q-num">Topic 1 — Evaluation Priorities</div>
+                <p class="primary-q">Does your organisation have explicit criteria for evaluating creative ideas?</p>
+                <div class="yn-group">
+                    <input type="radio" name="q1" id="q1-yes" value="yes">
+                    <label for="q1-yes" class="yes-label">Yes</label>
+                    <input type="radio" name="q1" id="q1-no" value="no">
+                    <label for="q1-no" class="no-label">No</label>
+                </div>
+                <div class="followup" id="q1-followup-yes">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">How consistently are those criteria actually applied?</p>
+                    <input type="radio" name="q1f" id="q1f-a" value="a">
+                    <label for="q1f-a">Consistently — everyone knows and uses them</label>
+                    <input type="radio" name="q1f" id="q1f-b" value="b">
+                    <label for="q1f-b">Inconsistently — they exist on paper but get bypassed</label>
+                    <input type="radio" name="q1f" id="q1f-c" value="c">
+                    <label for="q1f-c">Only in certain teams or for certain projects</label>
+                </div>
+                <div class="followup" id="q1-followup-no">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">What tends to drive the decision instead?</p>
+                    <input type="radio" name="q1f" id="q1f-d" value="d">
+                    <label for="q1f-d">Seniority — the most powerful voice wins</label>
+                    <input type="radio" name="q1f" id="q1f-e" value="e">
+                    <label for="q1f-e">Instinct — people go with what "feels right"</label>
+                    <input type="radio" name="q1f" id="q1f-f" value="f">
+                    <label for="q1f-f">Inertia — we default to what we've always done</label>
+                </div>
+            </div>
+
+            <!-- Q2: Decision-Making Authority -->
+            <div class="question" id="block-q2">
+                <div class="q-num">Topic 2 — Decision-Making Authority</div>
+                <p class="primary-q">Is there a clearly designated person or group who makes final creative decisions?</p>
+                <div class="yn-group">
+                    <input type="radio" name="q2" id="q2-yes" value="yes">
+                    <label for="q2-yes" class="yes-label">Yes</label>
+                    <input type="radio" name="q2" id="q2-no" value="no">
+                    <label for="q2-no" class="no-label">No</label>
+                </div>
+                <div class="followup" id="q2-followup-yes">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">Does the creative team feel that decision-maker understands creative value?</p>
+                    <input type="radio" name="q2f" id="q2f-a" value="a">
+                    <label for="q2f-a">Yes — they have creative literacy and the team trusts their judgement</label>
+                    <input type="radio" name="q2f" id="q2f-b" value="b">
+                    <label for="q2f-b">Partially — they mean well but default to commercial or political reasoning</label>
+                    <input type="radio" name="q2f" id="q2f-c" value="c">
+                    <label for="q2f-c">No — decisions feel disconnected from creative intent</label>
+                </div>
+                <div class="followup" id="q2-followup-no">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">What usually happens when there's no clear decision-maker?</p>
+                    <input type="radio" name="q2f" id="q2f-d" value="d">
+                    <label for="q2f-d">Projects stall or get stuck in rounds of feedback</label>
+                    <input type="radio" name="q2f" id="q2f-e" value="e">
+                    <label for="q2f-e">Someone eventually just makes a call, but it feels arbitrary</label>
+                    <input type="radio" name="q2f" id="q2f-f" value="f">
+                    <label for="q2f-f">The work gets diluted by committee until it's safe but uninspired</label>
+                </div>
+            </div>
+
+            <!-- Q3: Measuring Success -->
+            <div class="question" id="block-q3">
+                <div class="q-num">Topic 3 — Measuring Success</div>
+                <p class="primary-q">Does your organisation formally review the success of creative projects after they launch?</p>
+                <div class="yn-group">
+                    <input type="radio" name="q3" id="q3-yes" value="yes">
+                    <label for="q3-yes" class="yes-label">Yes</label>
+                    <input type="radio" name="q3" id="q3-no" value="no">
+                    <label for="q3-no" class="no-label">No</label>
+                </div>
+                <div class="followup" id="q3-followup-yes">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">Do those reviews capture creative quality, or just performance metrics?</p>
+                    <input type="radio" name="q3f" id="q3f-a" value="a">
+                    <label for="q3f-a">Both — we assess creative ambition alongside results</label>
+                    <input type="radio" name="q3f" id="q3f-b" value="b">
+                    <label for="q3f-b">Mostly metrics — clicks, reach, conversions</label>
+                    <input type="radio" name="q3f" id="q3f-c" value="c">
+                    <label for="q3f-c">It varies — no consistent framework for what "good" looks like</label>
+                </div>
+                <div class="followup" id="q3-followup-no">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">Why not?</p>
+                    <input type="radio" name="q3f" id="q3f-d" value="d">
+                    <label for="q3f-d">We're too busy — we move straight to the next project</label>
+                    <input type="radio" name="q3f" id="q3f-e" value="e">
+                    <label for="q3f-e">No one owns it — there's no process for post-launch review</label>
+                    <input type="radio" name="q3f" id="q3f-f" value="f">
+                    <label for="q3f-f">We wouldn't know what to measure beyond basic numbers</label>
+                </div>
+            </div>
+
+            <!-- Q4: Handling Rejection -->
+            <div class="question" id="block-q4">
+                <div class="q-num">Topic 4 — Handling Rejection</div>
+                <p class="primary-q">When a creative idea is rejected, is the reasoning clearly communicated to the person who proposed it?</p>
+                <div class="yn-group">
+                    <input type="radio" name="q4" id="q4-yes" value="yes">
+                    <label for="q4-yes" class="yes-label">Yes</label>
+                    <input type="radio" name="q4" id="q4-no" value="no">
+                    <label for="q4-no" class="no-label">No</label>
+                </div>
+                <div class="followup" id="q4-followup-yes">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">Does that feedback help the creator improve their next pitch?</p>
+                    <input type="radio" name="q4f" id="q4f-a" value="a">
+                    <label for="q4f-a">Yes — rejections are developmental, not just a verdict</label>
+                    <input type="radio" name="q4f" id="q4f-b" value="b">
+                    <label for="q4f-b">Sometimes — it depends on who gives the feedback</label>
+                    <input type="radio" name="q4f" id="q4f-c" value="c">
+                    <label for="q4f-c">Not really — the feedback is vague ("not quite right", "not now")</label>
+                </div>
+                <div class="followup" id="q4-followup-no">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">What effect does that have on the creative team?</p>
+                    <input type="radio" name="q4f" id="q4f-d" value="d">
+                    <label for="q4f-d">People become cautious — they only pitch "safe" ideas</label>
+                    <input type="radio" name="q4f" id="q4f-e" value="e">
+                    <label for="q4f-e">Resentment builds — the process feels opaque and unfair</label>
+                    <input type="radio" name="q4f" id="q4f-f" value="f">
+                    <label for="q4f-f">Disengagement — talented creatives stop trying or leave</label>
+                </div>
+            </div>
+
+            <!-- Q5: Risk Appetite -->
+            <div class="question" id="block-q5">
+                <div class="q-num">Topic 5 — Creative Risk Appetite</div>
+                <p class="primary-q">Has your organisation taken a genuine creative risk in the last 12 months?</p>
+                <div class="yn-group">
+                    <input type="radio" name="q5" id="q5-yes" value="yes">
+                    <label for="q5-yes" class="yes-label">Yes</label>
+                    <input type="radio" name="q5" id="q5-no" value="no">
+                    <label for="q5-no" class="no-label">No</label>
+                </div>
+                <div class="followup" id="q5-followup-yes">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">How did the organisation respond to the outcome?</p>
+                    <input type="radio" name="q5f" id="q5f-a" value="a">
+                    <label for="q5f-a">Positively — even imperfect results were treated as learning</label>
+                    <input type="radio" name="q5f" id="q5f-b" value="b">
+                    <label for="q5f-b">Mixed — it was celebrated if it worked, but blamed if it didn't</label>
+                    <input type="radio" name="q5f" id="q5f-c" value="c">
+                    <label for="q5f-c">It reinforced caution — "see, that's why we don't do that"</label>
+                </div>
+                <div class="followup" id="q5-followup-no">
+                    <div class="followup-label">Follow-up</div>
+                    <p class="followup-q">What's the main barrier to creative risk-taking?</p>
+                    <input type="radio" name="q5f" id="q5f-d" value="d">
+                    <label for="q5f-d">Fear of failure at leadership level</label>
+                    <input type="radio" name="q5f" id="q5f-e" value="e">
+                    <label for="q5f-e">No budget or time allocated for experimentation</label>
+                    <input type="radio" name="q5f" id="q5f-f" value="f">
+                    <label for="q5f-f">Cultural — the organisation rewards consistency over originality</label>
+                </div>
+            </div>
+
+            <p class="error" id="error-msg">Please answer all primary questions and their follow-ups before submitting.</p>
+            <button type="submit">Submit responses</button>
+        </form>
+
+        <div id="results">
+            <h2>Your Responses</h2>
+            <div id="results-list"></div>
+            <button class="restart" onclick="resetForm()">Start again</button>
+        </div>
+    </div>
+
+    <script>
+        const qData = {
+            q1: {
+                topic: "Evaluation Priorities",
+                primary: "Does your organisation have explicit criteria for evaluating creative ideas?",
+                followups: {
+                    yes: {
+                        question: "How consistently are those criteria actually applied?",
+                        answers: {
+                            a: "Consistently — everyone knows and uses them",
+                            b: "Inconsistently — they exist on paper but get bypassed",
+                            c: "Only in certain teams or for certain projects"
+                        }
+                    },
+                    no: {
+                        question: "What tends to drive the decision instead?",
+                        answers: {
+                            d: "Seniority — the most powerful voice wins",
+                            e: "Instinct — people go with what \"feels right\"",
+                            f: "Inertia — we default to what we've always done"
+                        }
+                    }
+                }
+            },
+            q2: {
+                topic: "Decision-Making Authority",
+                primary: "Is there a clearly designated person or group who makes final creative decisions?",
+                followups: {
+                    yes: {
+                        question: "Does the creative team feel that decision-maker understands creative value?",
+                        answers: {
+                            a: "Yes — they have creative literacy and the team trusts their judgement",
+                            b: "Partially — they default to commercial or political reasoning",
+                            c: "No — decisions feel disconnected from creative intent"
+                        }
+                    },
+                    no: {
+                        question: "What usually happens when there's no clear decision-maker?",
+                        answers: {
+                            d: "Projects stall or get stuck in rounds of feedback",
+                            e: "Someone eventually just makes a call, but it feels arbitrary",
+                            f: "The work gets diluted by committee until it's safe but uninspired"
+                        }
+                    }
+                }
+            },
+            q3: {
+                topic: "Measuring Success",
+                primary: "Does your organisation formally review the success of creative projects after they launch?",
+                followups: {
+                    yes: {
+                        question: "Do those reviews capture creative quality, or just performance metrics?",
+                        answers: {
+                            a: "Both — we assess creative ambition alongside results",
+                            b: "Mostly metrics — clicks, reach, conversions",
+                            c: "It varies — no consistent framework"
+                        }
+                    },
+                    no: {
+                        question: "Why not?",
+                        answers: {
+                            d: "We're too busy — we move straight to the next project",
+                            e: "No one owns it — there's no process for post-launch review",
+                            f: "We wouldn't know what to measure beyond basic numbers"
+                        }
+                    }
+                }
+            },
+            q4: {
+                topic: "Handling Rejection",
+                primary: "When a creative idea is rejected, is the reasoning clearly communicated?",
+                followups: {
+                    yes: {
+                        question: "Does that feedback help the creator improve their next pitch?",
+                        answers: {
+                            a: "Yes — rejections are developmental, not just a verdict",
+                            b: "Sometimes — it depends on who gives the feedback",
+                            c: "Not really — the feedback is vague"
+                        }
+                    },
+                    no: {
+                        question: "What effect does that have on the creative team?",
+                        answers: {
+                            d: "People become cautious — they only pitch \"safe\" ideas",
+                            e: "Resentment builds — the process feels opaque and unfair",
+                            f: "Disengagement — talented creatives stop trying or leave"
+                        }
+                    }
+                }
+            },
+            q5: {
+                topic: "Creative Risk Appetite",
+                primary: "Has your organisation taken a genuine creative risk in the last 12 months?",
+                followups: {
+                    yes: {
+                        question: "How did the organisation respond to the outcome?",
+                        answers: {
+                            a: "Positively — even imperfect results were treated as learning",
+                            b: "Mixed — celebrated if it worked, blamed if it didn't",
+                            c: "It reinforced caution — \"see, that's why we don't do that\""
+                        }
+                    },
+                    no: {
+                        question: "What's the main barrier to creative risk-taking?",
+                        answers: {
+                            d: "Fear of failure at leadership level",
+                            e: "No budget or time allocated for experimentation",
+                            f: "Cultural — the organisation rewards consistency over originality"
+                        }
+                    }
+                }
+            }
+        };
+
+        // Branching logic: show/hide follow-ups
+        for (const key of Object.keys(qData)) {
+            const yesRadio = document.getElementById(`${key}-yes`);
+            const noRadio = document.getElementById(`${key}-no`);
+            const yesFollowup = document.getElementById(`${key}-followup-yes`);
+            const noFollowup = document.getElementById(`${key}-followup-no`);
+
+            function update() {
+                // Clear follow-up selections when switching
+                const allFollowupInputs = document.querySelectorAll(`input[name="${key}f"]`);
+
+                if (yesRadio.checked) {
+                    yesFollowup.classList.add('visible');
+                    noFollowup.classList.remove('visible');
+                    // Clear follow-up radios in the hidden branch
+                    allFollowupInputs.forEach(inp => {
+                        if (noFollowup.contains(inp)) inp.checked = false;
+                    });
+                } else if (noRadio.checked) {
+                    noFollowup.classList.add('visible');
+                    yesFollowup.classList.remove('visible');
+                    allFollowupInputs.forEach(inp => {
+                        if (yesFollowup.contains(inp)) inp.checked = false;
+                    });
+                }
+            }
+
+            yesRadio.addEventListener('change', update);
+            noRadio.addEventListener('change', update);
+        }
+
+        document.getElementById('assessment').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            const responses = {};
+            let valid = true;
+
+            for (const key of Object.keys(qData)) {
+                const primary = fd.get(key);
+                const followup = fd.get(key + 'f');
+                if (!primary || !followup) { valid = false; break; }
+                responses[key] = { primary, followup };
+            }
+
+            if (!valid) {
+                document.getElementById('error-msg').style.display = 'block';
+                return;
+            }
+            document.getElementById('error-msg').style.display = 'none';
+
+            const list = document.getElementById('results-list');
+            list.innerHTML = '';
+
+            for (const [key, resp] of Object.entries(responses)) {
+                const q = qData[key];
+                const branch = q.followups[resp.primary];
+                const item = document.createElement('div');
+                item.className = 'result-item';
+                item.innerHTML = `
+                    <div class="q-label">${q.topic}</div>
+                    <div class="q-text">${q.primary}</div>
+                    <div class="a-primary ${resp.primary}">${resp.primary === 'yes' ? 'Yes' : 'No'}</div>
+                    <div class="a-followup">${branch.question}<br><strong>${branch.answers[resp.followup]}</strong></div>
+                `;
+                list.appendChild(item);
+            }
+
+            document.getElementById('assessment').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function resetForm() {
+            document.getElementById('assessment').reset();
+            document.getElementById('assessment').style.display = 'block';
+            document.getElementById('results').style.display = 'none';
+            // Hide all follow-ups
+            document.querySelectorAll('.followup').forEach(el => el.classList.remove('visible'));
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
